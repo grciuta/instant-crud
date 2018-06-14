@@ -1,13 +1,13 @@
-import { Reader } from '../common/Reader';
-import { Config } from '../config/Config';
-import { DB } from '../db/DB';
+import { Reader } from './Reader';
+import { Config } from './Config';
+import { DB } from './DB';
 import * as path from 'path';
 import { Spinner } from 'cli-spinner';
 
 export default class Generator {
-    public static async generateAll(): Promise<boolean> {
+    public static async generateAll(migrations_path: string, config_path?: string): Promise<boolean> {
         return new Promise<boolean>(resolve => {
-            if (Reader.__bindFile('./config/app-migrations.json') && Config.__init() && DB.__init() && typeof DB.__connect() !== 'undefined') {
+            if (Reader.__bindFile(migrations_path) && Config.__init(config_path) && DB.__init() && typeof DB.__connect() !== 'undefined') {
                 const allMIgrationObjects: any = Reader.__get_full();
 
                 if (allMIgrationObjects !== undefined) {
@@ -32,9 +32,9 @@ export default class Generator {
         });
     }
 
-    public static async generateOne(name: string = null): Promise<boolean> {
+    public static async generateOne(migrations_path: string, name: string = null, config_path?: string): Promise<boolean> {
         return new Promise<boolean>( async (resolve) => {
-            if (Reader.__bindFile('./config/app-migrations.json') && Config.__init() && DB.__init() && typeof DB.__connect() !== 'undefined') {
+            if (Reader.__bindFile(migrations_path) && Config.__init(config_path) && DB.__init() && typeof DB.__connect() !== 'undefined') {
                 let item: any = Reader.__get(name);
                 
                 if (item) {

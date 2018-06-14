@@ -1,5 +1,5 @@
-import { Writer } from '../common/Writer';
-import { Config } from '../config/Config';
+import { Writer } from './Writer';
+import { Config } from './Config';
 
 export class Coder {
     // instance variables...
