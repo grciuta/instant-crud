@@ -18,3 +18,5 @@ program.command('migrate')
             }
         }
     });
+
+program.parse(process.argv);
