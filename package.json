@@ -1,0 +1,27 @@
+{
+  "name": "instant-crud",
+  "version": "1.0.0",
+  "description": "Package used to generate data models, interfaces, repositories.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grciuta/instant-crud.git"
+  },
+  "keywords": [
+    "models",
+    "interfaces",
+    "repositories",
+    "automatization",
+    "generating",
+    "CRUD"
+  ],
+  "author": "grciuta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grciuta/instant-crud/issues"
+  },
+  "homepage": "https://github.com/grciuta/instant-crud#readme"
+}
