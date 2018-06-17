@@ -11,13 +11,13 @@ export class Coder {
     private tabs_size: number = 2;
     private multilineComments: boolean = false;
 
-    public constructor(type: string, directory: string, file_name: string) {
+    public constructor(type: string, directory: string, file_name: string, config_path?: string) {
         // setting up a file entry...
         this.directory = directory;
         this.file_name = this.camelCase(file_name);
         this.type = type;
 
-        if (Config.__init()) {
+        if (Config.__init(config_path)) {
             this.config = Config.__get('file_writer');
             if (this.config) {
                 this.tabs_size = this.config.tabs_size;

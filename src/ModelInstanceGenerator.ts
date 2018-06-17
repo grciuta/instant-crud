@@ -9,8 +9,8 @@ export class ModelInstanceGenerator extends Coder {
         'buffer': 'Buffer'
     };
     
-    constructor(type: string, name: string, directory: string, file_name: string) {
-        super(type, directory, file_name);
+    constructor(type: string, name: string, directory: string, file_name: string, config?: string) {
+        super(type, directory, file_name, config);
         this.name = this.camelCase(name);
     }
     // import part...

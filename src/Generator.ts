@@ -17,7 +17,7 @@ export default class Generator {
                     loader.start();
                     migrations.forEach(async (key, index) => {
                         if (allMIgrationObjects.hasOwnProperty(key)) {
-                            await this.generateOne(key);
+                            await this.generateOne(migrations_path, key, config_path);
 
                             if (index === migrations.length - 1) {
                                 loader.stop(true);
@@ -39,7 +39,7 @@ export default class Generator {
                 
                 if (item) {
                     let migrator = require('./StaticMigration').default;
-                    let migratorInstance = new migrator(DB.__connect(), name, item);
+                    let migratorInstance = new migrator(DB.__connect(), name, item, config_path);
                     resolve(await migratorInstance.up());
                 }
             } else {
