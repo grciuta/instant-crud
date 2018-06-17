@@ -1,6 +1,6 @@
 {
   "name": "instant-crud",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Package used to generate data models, interfaces, repositories.",
   "main": "index.js",
   "scripts": {
@@ -28,17 +28,18 @@
   },
   "homepage": "https://github.com/grciuta/instant-crud#readme",
   "devDependencies": {
-    "@types/mongodb": "^3.0.19",
-    "@types/mongoose": "^5.0.16",
-    "cli-spinner": "^0.2.8",
-    "commander": "^2.15.1",
     "gulp": "^4.0.0",
-    "gulp-typescript": "^5.0.0-alpha.1",
-    "mongoose": "^5.1.5",
-    "typescript": "^2.9.2"
+    "gulp-typescript": "^5.0.0-alpha.1"
   },
   "directories": {
     "lib": "lib"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/mongodb": "^3.0.19",
+    "@types/mongoose": "^5.0.16",
+    "cli-spinner": "^0.2.8",
+    "commander": "^2.15.1",
+    "mongoose": "^5.1.5",
+    "typescript": "^2.9.2"
+  }
 }
