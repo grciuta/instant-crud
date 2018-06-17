@@ -38,7 +38,7 @@ export default class Generator {
                 let item: any = Reader.__get(name);
                 
                 if (item) {
-                    let migrator = require(path.join(__dirname, `/../../../${Config.__get('is_dev') ? 'dev' : 'prod'}/${item.migrator}`)).default;
+                    let migrator = require('./StaticMigration').default;
                     let migratorInstance = new migrator(DB.__connect(), name, item);
                     resolve(await migratorInstance.up());
                 }
