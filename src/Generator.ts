@@ -7,6 +7,9 @@ import { Spinner } from 'cli-spinner';
 export default class Generator {
     public static async generateAll(migrations_path: string, config_path?: string): Promise<boolean> {
         return new Promise<boolean>(resolve => {
+            migrations_path = path.join(process.cwd(), migrations_path);
+            config_path = path.join(process.cwd(), config_path);
+            
             if (Reader.__bindFile(migrations_path) && Config.__init(config_path) && DB.__init() && typeof DB.__connect() !== 'undefined') {
                 const allMIgrationObjects: any = Reader.__get_full();
 
