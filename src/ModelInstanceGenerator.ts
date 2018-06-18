@@ -17,7 +17,7 @@ export class ModelInstanceGenerator extends Coder {
     public async modelImports(relations: Array<any>): Promise<boolean> {
         return new Promise<boolean>(async (resolve, reject) => {
             // import current instance interface...
-            this.import(`${this.name}Interface`, `../interfaces/${this.name}`, false, '');
+            this.import(`${this.name}Interface, ${this.name}Schema`, `../interfaces/${this.name}`, false, '');
             // import current instance repository...
             this.import(`${this.name}Repository`, `../repositories/${this.name}`, false, '');
             // array of already used table names of 'realtions'
@@ -167,10 +167,7 @@ export class ModelInstanceGenerator extends Coder {
             await this.writeComment(`Specific instance saving...`);
             await this.startFunction('public', `save`, [], `Promise<boolean>`);
             await this.writeLine(`return new Promise((resolve, reject) => {`);
-            await this.startStatement(`this._${this.name.toLowerCase()}Model.isDeleted()`, -1);
-            await this.writeLine(`reject(false);`, 1);
-            await this.endStatement(1);
-            await this.writeLine(`this._${this.name.toLowerCase()}Model.save((error: any) => {`, 1);
+            await this.writeLine(`${this.name}Schema.collection.save(this._${this.name.toLowerCase()}Model, (error: any) => {`, 1);
             await this.startStatement(`error`);
             await this.writeLine(`reject(error);`, 2);
             await this.endStatement(2);
@@ -182,7 +179,7 @@ export class ModelInstanceGenerator extends Coder {
             await this.writeComment(`Specific instance deleting...`);
             await this.startFunction('public', `delete`, [], `Promise<boolean>`);
             await this.writeLine(`return new Promise((resolve, reject) => {`);
-            await this.writeLine(`this._${this.name.toLowerCase()}Model.remove((error: any) => {`, 1);
+            await this.writeLine(`${this.name}Schema.collection.remove(this._${this.name.toLowerCase()}Model, (error: any) => {`, 1);
             await this.startStatement(`error`);
             await this.writeLine(`reject(error);`, 2);
             await this.endStatement(2);
