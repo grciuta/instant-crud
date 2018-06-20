@@ -1,6 +1,6 @@
 {
   "name": "instant-crud",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Package used to generate data models, interfaces, repositories.",
   "main": "index.js",
   "scripts": {
