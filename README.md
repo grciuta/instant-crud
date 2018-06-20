@@ -1,23 +1,21 @@
-#instant-crud
+# instant-crud
 
 Package used to generate model, interface and repository code files of MongoDB (mongoose).
 Everything generated for coding with **TypeScript**.
 
-######Install
+## Install
 
 `npm i instant-crud -g`, for global `ic` usage.
 
-######Usage
+## Requirements
 
-Options:
+To successfull use this package you should create 2 config-like JSON files:
 
-* **-m [migration]** : define **migration** instance to be generated. If not defined, it will roll and generated all defined instance from **config**.
-* **-c [config]** : define path to JSON file, where is defined items, which has to be generated. Ex.:
-
-`
+* **Definitions config** file, to define all data instances: 
+```
 {
     ...
-    "instance": {
+    "instance-name": {
         // *columns* - defines object model items and their types.
         "columns": [
             {
@@ -63,32 +61,46 @@ Options:
             ...
         ]
     }
-`
-
-* **-c [config]** : define path to JSON file, where is defined items: *mongo* - with all connection properties & *file_writer* - for defining output directories and *tabs* size. Ex.:
-
-`
+```
+* **Config** file, to define MongoDB connections, file formatting settings: 
+```
     ...
     "mongo": {
         "server": "localhost",
         "port": null,
-        "database": "instant_message",
-        "username": null,
+        "database": "database_of_project",
+        "username": root,
         "password": null
     },
     "file_writer": {
         "tabs_size": 4,
         "output": {
             "interface": {
-                "dir": "/instant-server"
+                "dir": "/core"
             },
             "repository": {
-                "dir": "/instant-server"
+                "dir": "/core"
             },
             "model": {
-                "dir": "/instant-server"
+                "dir": "/core"
             }
         }
     }
     ...
-`
+```
+
+## Usage
+
+* Commands:
+
+Run `ic migrate` - migration command.
+Run `ic test-directory` - command, to check if CLI correctly gets your project root directory.
+
+* `migrate` command options:
+
+* **-m [migration]** : define **migration** instance to be generated. If not defined, it will roll and generated all defined instance from **definition config**. Ex.: `ic migrate -m instance-name ...` or `ic migrate -m ...`
+
+* **-d [definitions-config]** : define path to JSON file, where is defined items, which has to be generated. Ex.: `ic migrate -m -d config/definitions.json` (**!important: root directory of project will be automatically picked!**)
+
+* **-c [config]** : define path to JSON file, where is defined items: *mongo* - with all connection properties & *file_writer* - for defining output directories and *tabs* size for formatting generating code.  Ex.: `ic migrate -m -d config/app.json` (**!important: root directory of project will be automatically picked!**)
+
