@@ -9,6 +9,10 @@ Everything generated for coding with **TypeScript**.
 
 ## Requirements
 
+**!IMPORTANT!**
+
+Before star using this tool - please copy files from `../node_modules/src/base/repositories` into predefined directory, where your generated repositories will exist. Or do this after first migration.
+
 To successfull use this package you should create 2 config-like JSON files:
 
 * **Definitions config** file, to define all data instances: 
@@ -62,7 +66,9 @@ To successfull use this package you should create 2 config-like JSON files:
         ]
     }
 ```
+
 * **Config** file, to define MongoDB connections, file formatting settings: 
+
 ```
     ...
     "mongo": {
@@ -91,12 +97,13 @@ To successfull use this package you should create 2 config-like JSON files:
 
 ## Usage
 
-* Commands:
+**Commands:**
 
 Run `ic migrate` - migration command.
+
 Run `ic test-directory` - command, to check if CLI correctly gets your project root directory.
 
-* `migrate` command options:
+**`migrate` command options:**
 
 * **-m [migration]** : define **migration** instance to be generated. If not defined, it will roll and generated all defined instance from **definition config**. Ex.: `ic migrate -m instance-name ...` or `ic migrate -m ...`
 
